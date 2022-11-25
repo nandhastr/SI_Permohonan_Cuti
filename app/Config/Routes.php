@@ -39,7 +39,7 @@ $routes->get('/', 'Page::index');
 $routes->get('/Data_karyawan','Data_karyawan::index');
 $routes->get('/Form_cuti','Page::Form_cuti');
 $routes->get('/Tambah_data_karyawan','Page::TambahData');
-$routes->get('\Register','..\::register');
+$routes->get('/register','Page::register');
 $routes->post('/Page/save','Page::save');
 
 

@@ -65,7 +65,7 @@ class Page extends BaseController
             'judul' => 'Register'
 
         ];
-        echo view('..//register',$data);
+        echo view('register',$data);
     }
 
     // proses input data ke db 

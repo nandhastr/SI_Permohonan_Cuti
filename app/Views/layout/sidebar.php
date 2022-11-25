@@ -55,7 +55,7 @@
             </p>
           </a>
         <li class="nav-item">
-          <a href="<?php echo base_url('../Register') ?>" class="nav-link">
+          <a href="<?php echo base_url('register') ?>" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>
               Registrasi
