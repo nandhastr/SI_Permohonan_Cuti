@@ -3,14 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Nov 2022 pada 16.53
+-- Waktu pembuatan: 26 Nov 2022 pada 09.12
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.28
-
--- untuk login ke aplikasi
--- email : test@gamil.com
--- pass : bogor2022 
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -25,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `dbcuti`
 --
+-- unutk login :
+-- email : admin@gmail.com
+-- pass : bogor2022
 
 -- --------------------------------------------------------
 
@@ -71,7 +69,7 @@ CREATE TABLE `auth_groups_permissions` (
 
 CREATE TABLE `auth_groups_users` (
   `group_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0
+  `id` int(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -104,7 +102,19 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (8, '::1', 'test@gmail.com', NULL, '2022-11-21 10:47:49', 0),
 (9, '::1', 'test@gmail.com', NULL, '2022-11-21 10:48:43', 0),
 (10, '::1', 'test@gmail.com', 23, '2022-11-21 10:50:24', 1),
-(11, '::1', 'test@gmail.com', 23, '2022-11-25 09:15:30', 1);
+(11, '::1', 'test@gmail.com', 23, '2022-11-25 09:15:30', 1),
+(12, '::1', 'test@gmail.com', NULL, '2022-11-26 01:06:37', 1),
+(13, '::1', 'test@gmail.com', NULL, '2022-11-26 01:06:58', 1),
+(14, '::1', 'test@gmail.com', NULL, '2022-11-26 01:08:02', 1),
+(15, '::1', 'test@gmail.com', NULL, '2022-11-26 01:09:32', 1),
+(16, '::1', 'test@gmail.com', NULL, '2022-11-26 01:09:56', 0),
+(17, '::1', 'test@gmail.com', NULL, '2022-11-26 01:21:27', 1),
+(18, '::1', 'test@gmail.com', NULL, '2022-11-26 01:21:54', 1),
+(19, '::1', 'test2@gmail.com', NULL, '2022-11-26 01:36:40', 0),
+(20, '::1', 'test2@gmail.com', NULL, '2022-11-26 01:36:59', 1),
+(21, '::1', 'test2@gmail.com', NULL, '2022-11-26 01:38:51', 1),
+(22, '::1', 'admin@gmail.com', NULL, '2022-11-26 01:40:58', 1),
+(23, '::1', 'admin@gmail.com', 25, '2022-11-26 02:10:42', 1);
 
 -- --------------------------------------------------------
 
@@ -154,7 +164,7 @@ CREATE TABLE `auth_tokens` (
 --
 
 CREATE TABLE `auth_users_permissions` (
-  `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `id` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -166,7 +176,7 @@ CREATE TABLE `auth_users_permissions` (
 
 CREATE TABLE `cuti` (
   `id_cuti` varchar(30) NOT NULL,
-  `id_user` varchar(256) NOT NULL,
+  `user_id` varchar(256) NOT NULL,
   `alasan` text NOT NULL,
   `tgl_diajukan` date NOT NULL,
   `mulai` date NOT NULL,
@@ -174,17 +184,6 @@ CREATE TABLE `cuti` (
   `id_status_cuti` int(12) NOT NULL,
   `perihal_cuti` varchar(100) NOT NULL,
   `alasan_verifikasi` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `jenis_kelamin`
---
-
-CREATE TABLE `jenis_kelamin` (
-  `id_jenis_kelamin` int(11) NOT NULL,
-  `jenis_kelamin` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -228,7 +227,7 @@ CREATE TABLE `status_cuti` (
 --
 
 CREATE TABLE `users` (
-  `id_user` int(11) UNSIGNED NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
   `password_hash` varchar(255) NOT NULL,
@@ -251,8 +250,9 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id_user`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`, `id_user_level`, `id_user_detail`) VALUES
-(23, 'test@gmail.com', 'admin', '$2y$10$C6S9zlwPEw1dTymixXf2cOuzgF9ZHlZ6AWjhkuSoYmzz61GVCtYlS', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-21 10:50:10', '2022-11-21 10:50:10', NULL, 0, '');
+INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`, `id_user_level`, `id_user_detail`) VALUES
+(24, 'test2@gmail.com', 'test2', '$2y$10$wPx5BiTB0oPEJ/9qvsmq0.Hfqj4YOTX3GcaMxV52/xrL.0/Fj1c7q', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-26 01:36:04', '2022-11-26 01:36:04', NULL, 0, ''),
+(25, 'admin@gmail.com', 'test', '$2y$10$2vGWCg35hWOlPu0JlnuDSON5GEz6Ms0g/SP1hqv/YyQxal4mRxnO.', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-26 01:40:33', '2022-11-26 01:40:33', NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -289,7 +289,7 @@ INSERT INTO `user_detail` (`id_user_detail`, `nip`, `nama_lengkap`, `jns_klmn`, 
 
 CREATE TABLE `user_level` (
   `id_user_level` int(11) NOT NULL,
-  `user_level` varchar(30) NOT NULL
+  `user_level` enum('pegawai','admin','super admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -319,8 +319,8 @@ ALTER TABLE `auth_groups_permissions`
 -- Indeks untuk tabel `auth_groups_users`
 --
 ALTER TABLE `auth_groups_users`
-  ADD KEY `auth_groups_users_user_id_foreign` (`user_id`),
-  ADD KEY `group_id_user_id` (`group_id`,`user_id`);
+  ADD KEY `auth_groups_users_user_id_foreign` (`id`),
+  ADD KEY `group_id_user_id` (`group_id`,`id`);
 
 --
 -- Indeks untuk tabel `auth_logins`
@@ -355,19 +355,13 @@ ALTER TABLE `auth_tokens`
 --
 ALTER TABLE `auth_users_permissions`
   ADD KEY `auth_users_permissions_permission_id_foreign` (`permission_id`),
-  ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
+  ADD KEY `user_id_permission_id` (`id`,`permission_id`);
 
 --
 -- Indeks untuk tabel `cuti`
 --
 ALTER TABLE `cuti`
   ADD PRIMARY KEY (`id_cuti`);
-
---
--- Indeks untuk tabel `jenis_kelamin`
---
-ALTER TABLE `jenis_kelamin`
-  ADD PRIMARY KEY (`id_jenis_kelamin`);
 
 --
 -- Indeks untuk tabel `migrations`
@@ -385,7 +379,7 @@ ALTER TABLE `status_cuti`
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `username` (`username`);
 
@@ -421,7 +415,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -442,12 +436,6 @@ ALTER TABLE `auth_tokens`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `jenis_kelamin`
---
-ALTER TABLE `jenis_kelamin`
-  MODIFY `id_jenis_kelamin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
@@ -463,7 +451,7 @@ ALTER TABLE `status_cuti`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_detail`
@@ -493,20 +481,20 @@ ALTER TABLE `auth_groups_permissions`
 --
 ALTER TABLE `auth_groups_users`
   ADD CONSTRAINT `auth_groups_users_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE CASCADE;
+  ADD CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
-  ADD CONSTRAINT `auth_tokens_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE CASCADE;
+  ADD CONSTRAINT `auth_tokens_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `auth_users_permissions`
 --
 ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`) ON DELETE CASCADE;
+  ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
