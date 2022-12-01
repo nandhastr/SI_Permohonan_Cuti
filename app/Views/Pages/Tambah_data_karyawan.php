@@ -51,10 +51,14 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Tambah Data Pegawai</h5> <br>
 
-                                                <!-- Main content -->
+                                                <!-- cetak validasi cek semua error -->
+                                                    <?= $validation->listErrors(); ?>
+                                                    
+                                                    <!-- Main content -->
                                                 <section class="content">
                                                     <div class="container-fluid">
-
+                                                        
+                                                    <!-- form -->
                                                         <form action="<?php echo base_url('/Page/save') ?>" method="POST"
                                                             enctype="multipart/form-data">
 
@@ -64,11 +68,14 @@
 
                                                                 <div class="form-group row">
                                                                     <label for="NIP"
-                                                                        class="col-sm-2 col-form-label">NRP</label>
+                                                                        class="col-sm-2 col-form-label">NIP</label>
                                                                     <div class="col-sm-10">
-                                                                        <input type="text" class="form-control" id="NIP"
+                                                                        <input type="text" class="form-control <?= ($validation->hasError('nip'))?'is-invalid':''; ?>" id="NIP"
                                                                             placeholder="No Registrasi Pegawai"
-                                                                            autofocus required name="nip">
+                                                                            autofocus   name="nip" value="<?= old('nip'); ?>">
+                                                                            <div class="valid-feedback">
+                                                                                <?= $validation->getError('nip'); ?>
+                                                                            </div>
 
                                                                     </div>
                                                                 </div>
@@ -79,7 +86,7 @@
                                                                     <div class="col-sm-10">
                                                                         <input type="text" class="form-control"
                                                                             id="nama" placeholder="nama lengkap"
-                                                                            name="nama" required>
+                                                                            name="nama" value="<?= old('nama'); ?>" >
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -88,11 +95,11 @@
                                                                         kelamin</label>
                                                                     <div class="col-sm-10">
                                                                         <select class="custom-select"
-                                                                            name="jenis_kelamin" required>
+                                                                            name="jenis_kelamin" value="<?= old('jenis_kelamin'); ?>">
                                                                             <option selected>Pilih jenis kelamin
                                                                             </option>
-                                                                            <option value="Pria">Pria</option>
-                                                                            <option value="Wanita">Wanita</option>
+                                                                            <option >Pria</option>
+                                                                            <option>Wanita</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -102,16 +109,16 @@
                                                                         telp</label>
                                                                     <div class="col-sm-10">
                                                                         <input type="text" class="form-control" id="tlp"
-                                                                            placeholder="No telpon" name="tlp" required>
+                                                                            placeholder="No telpon" name="tlp" value="<?= old('no_telpon'); ?>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="email"
                                                                         class="col-sm-2 col-form-label">Email</label>
                                                                     <div class="col-sm-10">
-                                                                        <input type="email" class="form-control"
-                                                                            id="email" placeholder="email" name="email"
-                                                                            required>
+                                                                        <input type="email" class="form-control"                    
+                                                                            id="email" placeholder="email" name="email" value="<?= old('email'); ?>"
+                                                                            >
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -120,7 +127,7 @@
                                                                     <div class="col-sm-10">
                                                                         <input type="text" class="form-control"
                                                                             id="alamat" placeholder="alamat lengkap"
-                                                                            name="alamat" required>
+                                                                            name="alamat" value="<?= old('alamat'); ?>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -129,7 +136,7 @@
                                                                     <div class="col-sm-10">
                                                                         <input type="text" class="form-control"
                                                                             id="Jabatan" placeholder="Jabatan "
-                                                                            name="jabatan" required>
+                                                                            name="jabatan" value="<?= old('jabatan'); ?>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
