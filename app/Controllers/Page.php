@@ -45,7 +45,6 @@ class Page extends BaseController
     }
 
     public function TambahData(){
-        //  session();
         // form tambah data karyawan
         $data = [
             'title' => 'Tambah Data Karyawan',
@@ -89,7 +88,7 @@ class Page extends BaseController
             )){
                 $validation = \Config\Services::validation();
                 // dd($validation);
-                return redirect()->to('/Page/Tambah_data_karyawan')->withInput()->with('validation', $validation);
+                return redirect()->to('/Page/Tambah_data_karyawan')->withInput();
             }
             // menangkap data input dari form  
             //   dd(  $this->request->getVar());

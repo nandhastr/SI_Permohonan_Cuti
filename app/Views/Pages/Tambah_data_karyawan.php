@@ -52,7 +52,8 @@
                                                 <h5 class="card-title">Tambah Data Pegawai</h5> <br>
 
                                                 <!-- cetak validasi cek semua error -->
-                                                    <?= $validation->listErrors(); ?>
+                                                   
+                                                   
                                                     
                                                     <!-- Main content -->
                                                 <section class="content">
@@ -73,7 +74,7 @@
                                                                             placeholder="No Registrasi Pegawai"
                                                                             autofocus   name="nip" value="<?= old('nip'); ?>">
                                                                             <div class="valid-feedback">
-                                                                                <?= $validation->getError('nip'); ?>
+                                                                                <?php $validation->getError('nip') ?>
                                                                             </div>
 
                                                                     </div>
