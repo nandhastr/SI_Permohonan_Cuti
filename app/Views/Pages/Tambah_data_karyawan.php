@@ -59,8 +59,7 @@
                                                     <div class="container-fluid">
                                                         
                                                     <!-- form -->
-                                                        <form action="<?php echo base_url('/Page/save') ?>" method="POST"
-                                                            enctype="multipart/form-data">
+                                                        <form action="<?php echo base_url('/Page/save') ?>" method="POST" enctype="multipart/form-data">
 
 
                                                             <?= csrf_field(); ?>

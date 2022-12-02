@@ -41,6 +41,7 @@ $routes->get('/Form_cuti','Page::Form_cuti');
 $routes->add('/Page/Tambah_data_karyawan','Page::TambahData');
 // $routes->get('/register','Page::register');
 $routes->post('/Page/save','Page::save');
+$routes->delete('/Page/delete/(:num)','Page::delete/$1');
 
 
 /*

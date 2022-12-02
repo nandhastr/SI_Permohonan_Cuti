@@ -114,7 +114,13 @@ class Page extends BaseController
 
     }
 
-    
+    public function delete($id){
+        $this->cutimodel->delete($id);
+        session()->getFlashdata('pesan','Data berhasil dihapus');
+        return redirect()->to('/Data_karyawan');
+    }
+
+
 
 
 

@@ -30,7 +30,7 @@
       <!-- Small boxes (Stat box) -->
 
       <h2><b>Data Karyawan PT. .....</b></h2> <br>
-      <a href="Tambah_data_karyawan" class="btn btn-success">Tambah Data</a>
+      <a href="/Page/Tambah_data_karyawan" class="btn btn-success">Tambah Data</a>
 
       <!-- Main content -->
       <div class="row">
@@ -84,7 +84,16 @@
                     <td><?= $row['jabatan']; ?></td>
                     <td><?= $row['created_at']; ?></td>
                     <td>
-                      <a href="">Hapus</a> &nbsp;<b>|</b>&nbsp;
+                     
+                      <form action="/Page/delete/<?= $row['id_user_detail']; ?>" method="post" class="d-inline">
+                      <?= csrf_field(); ?>
+                      <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class=" btn btn-success" onclick="return confirm('apakah anda yakin data di hapus?')">Delete</button>
+                    
+                    </form>
+
+
+
                       <a href="">Edit</a>
                     </td>
 
